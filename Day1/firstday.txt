@@ -1,0 +1,5 @@
+# introduction of the devops 
+what is devops ?
+why devops are used ?
+basic knowledge of the devops ....
+a little bit infor,ation  about the container image 

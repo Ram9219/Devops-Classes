@@ -1,0 +1,63 @@
+🚀 Docker Starter Guide (Structured)
+1️⃣ Basic Docker Commands
+📌 Check Docker
+docker --version
+📌 Pull Image
+docker pull ubuntu
+📌 Run Container
+docker run -it ubuntu bash
+📌 List Containers
+docker ps      # running
+docker ps -a   # all
+📌 Stop & Remove
+docker stop <container_id>
+docker rm <container_id>
+📌 Images
+docker images
+docker rmi <image_id>
+2️⃣ Project: Node.js Docker App
+📁 Folder Structure
+docker-demo/
+│── app.js
+│── package.json
+│── Dockerfile
+│── .dockerignore
+📄 app.js
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+    res.end("Hello Ram 🚀 Docker is working!");
+});
+
+server.listen(3000, () => {
+    console.log("Server running on port 3000");
+});
+📄 package.json
+{
+  "name": "docker-demo",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {}
+}
+📄 Dockerfile
+FROM node:18
+
+WORKDIR /app
+
+COPY . .
+
+RUN npm install
+
+EXPOSE 3000
+
+CMD ["node", "app.js"]
+📄 .dockerignore
+node_modules
+npm-debug.log
+3️⃣ Build & Run
+🔨 Build Image
+docker build -t docker-demo .
+▶️ Run Container
+docker run -p 3000:3000 docker-demo
+🌐 Output
+http://localhost:3000

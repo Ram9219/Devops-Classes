@@ -1,0 +1,115 @@
+about the container and lifecycle of the devops 
+Stages of the  docker 
+ discusedd  about the security group ,C-groups ,Namespaces 
+
+
+
+
+
+ 1. Mount Namespace
+4
+Definition
+
+A Mount Namespace isolates the filesystem mount points for a process or container.
+
+This means each container can have its own view of the filesystem even though it runs on the same host OS.
+
+Key Idea
+
+Processes inside a container cannot see mount points created outside their namespace unless they are shared.
+
+Example
+
+Suppose on the host:
+
+/home
+/data
+/mnt/backup
+
+Inside a Docker container:
+
+/        (container root filesystem)
+/app
+/tmp
+
+The container cannot see /mnt/backup unless it is explicitly mounted.
+
+Example Docker command:
+
+docker run -v /host/data:/container/data ubuntu
+
+Here:
+
+Host: /host/data
+Container: /container/data
+
+The mount namespace allows Docker to attach host directories inside the container safely.
+
+Why it is useful
+
+Containers have isolated filesystems
+
+Prevents processes from accessing host files
+
+Allows volume mounting
+
+2. UTS Namespace
+4
+Definition
+
+UTS Namespace isolates system identifiers such as:
+
+Hostname
+
+NIS domain name
+
+UTS stands for:
+
+Unix Time Sharing System
+
+Key Idea
+
+Each container can have its own hostname independent of the host system.
+
+Example
+
+Host machine hostname:
+
+host-machine
+
+Run container:
+
+docker run -it ubuntu bash
+
+Inside container:
+
+hostname
+
+Output might be:
+
+3f9c12ab45
+
+Docker automatically assigns a unique container hostname.
+
+You can also set it manually:
+
+docker run --hostname mycontainer ubuntu
+
+Inside container:
+
+hostname
+mycontainer
+Why it is useful
+
+Containers can have different hostnames
+
+Useful for microservices and networking
+
+Prevents conflicts with host system identity
+
+Quick Comparison
+Feature	Mount Namespace	UTS Namespace
+Controls	Filesystem mount points	Hostname & domain
+Purpose	Filesystem isolation	System identity isolation
+Example	/app, /data mounts	hostname command
+Used for	Volumes & container FS	Container naming
