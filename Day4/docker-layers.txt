@@ -1,0 +1,116 @@
+🐳 Docker Image Registry (Structured Guide)
+1️⃣ What is an Image Registry?
+4
+
+👉 A Docker Image Registry is a storage system where Docker images are:
+
+Stored 📦
+
+Managed 📂
+
+Shared 🌍
+
+🧠 Simple Definition
+
+A registry is like GitHub for Docker images
+
+2️⃣ How It Works
+🔄 Basic Flow
+
+Developer builds image
+
+Pushes to registry
+
+Others pull and use it
+
+Example
+# Build image
+docker build -t myapp .
+
+# Tag image
+docker tag myapp username/myapp
+
+# Push to registry
+docker push username/myapp
+
+# Pull from registry
+docker pull username/myapp
+3️⃣ Types of Docker Registries
+🌐 1. Public Registry
+Example:
+
+Docker Hub
+
+👉 Anyone can:
+
+Pull images
+
+Share public images
+
+🔒 2. Private Registry
+
+👉 Used by companies for:
+
+Security 🔐
+
+Internal apps 🏢
+
+Examples:
+
+Amazon Elastic Container Registry
+
+Google Container Registry
+
+🏠 3. Self-Hosted Registry
+
+👉 You can run your own:
+
+docker run -d -p 5000:5000 registry
+
+👉 Access:
+
+localhost:5000
+4️⃣ Important Concepts
+📌 Image Tagging
+docker tag myapp username/myapp:v1
+
+👉 Format:
+
+username/repository:tag
+📌 Login to Registry
+docker login
+📌 Push Image
+docker push username/myapp
+📌 Pull Image
+docker pull username/myapp
+5️⃣ Real Example (Your Case 🚀)
+# Build
+docker build -t docker-demo .
+
+# Tag
+docker tag docker-demo Ram9219/docker-demo
+
+# Push
+docker push Ram9219/docker-demo
+6️⃣ Where Images Are Stored?
+
+👉 Inside registry:
+
+Repositories → Tags → Layers
+
+Repository → Project name
+
+Tag → Version (v1, latest)
+
+Layers → Image components
+
+7️⃣ Why Registry is Important
+
+✅ Share apps easily
+✅ Version control for images
+✅ Deploy in cloud / Kubernetes
+✅ CI/CD integration
+
+🎯 Interview One-Liner
+
+“Docker Image Registry is a centralized system used to store, manage, and distribute container images.”
