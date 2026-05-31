@@ -5,7 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out repository code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
     - name: run a script
       run: echo "hello world"
-      
+    - name: node setup
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+    - name: intsall dependencies
+      run : npm i
+    - name: start the server
+      run : node server.js
