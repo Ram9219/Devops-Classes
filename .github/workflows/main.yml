@@ -1,18 +1,18 @@
-name: my first github action ytaml file 
+name: Node CI
+
 on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Check out repository code
-      uses: actions/checkout@v4
-    - name: run a script
-      run: echo "hello world"
-    - name: node setup
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20
-    - name: intsall dependencies
-      run : npm i
-    - name: start the server
-      run : node server.js
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm install
+
+      - run: npm test
