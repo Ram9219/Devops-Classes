@@ -4,15 +4,9 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - run: npm install
-
-      - run: npm test
+  runs-on: ubuntu-latest
+  steps:
+  - name: checkout-code
+  uses: actions/checkout@v4
+  - name: scripts run
+   run: echo "HEllo from  the yaml file "
